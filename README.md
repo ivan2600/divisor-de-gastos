@@ -1,1 +1,1 @@
-# divisor-de-gastos
+# Divisor de gastos
