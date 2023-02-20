@@ -18,7 +18,6 @@ let total1 = 0;
 let total2 = 0;
 let total3 = 0;
 let total4 = 0;
-//let total1 = saldos1.reduce((a, b) => a + b, 0);
 
 btn1.addEventListener('click', botonClick1);
 btn2.addEventListener('click', botonClick2);
