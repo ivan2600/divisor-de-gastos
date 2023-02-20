@@ -1,3 +1,5 @@
+const addUser = document.querySelector('#add-user');
+const userName = document.querySelector('#new-user');
 const input1 = document.querySelector('#calculo1');
 const input2 = document.querySelector('#calculo2');
 const input3 = document.querySelector('#calculo3');
@@ -18,11 +20,21 @@ let total1 = 0;
 let total2 = 0;
 let total3 = 0;
 let total4 = 0;
+const users = [];
 
+addUser.addEventListener('click', addNewUser);
 btn1.addEventListener('click', botonClick1);
 btn2.addEventListener('click', botonClick2);
 btn3.addEventListener('click', botonClick3);
 btn4.addEventListener('click', botonClick4);
+
+function addNewUser() {
+  let newUser = userName.value;
+
+  users.push(newUser);
+
+  console.log(users);
+}
 
 function calcularSaldos() {
   total1 = saldos1.reduce((a, b) => a + b, 0);
@@ -48,10 +60,10 @@ function botonClick1() {
 
   console.log('funciona!');
 
-  saldos1.push(number1 - (number1 * 1.75));
-  saldos2.push(number1 * 0.25);
-  saldos3.push(number1 * 0.25);
-  saldos4.push(number1 * 0.25);
+  saldos1.push(number1 - (number1 / 4));
+  saldos2.push(number1 - (number1 + number1 / 4));
+  saldos3.push(number1 - (number1 + number1 / 4));
+  saldos4.push(number1 - (number1 + number1 / 4));
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -62,10 +74,10 @@ function botonClick2() {
 
   console.log('funciona!');
 
-  saldos1.push(number2 * 0.25);
-  saldos2.push(number2 - (number2 * 1.75));
-  saldos3.push(number2 * 0.25);
-  saldos4.push(number2 * 0.25);
+  saldos1.push(number2 - (number2 + number2 / 4));
+  saldos2.push(number2 - (number2 / 4));
+  saldos3.push(number2 - (number2 + number2 / 4));
+  saldos4.push(number2 - (number2 + number2 / 4));
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -76,10 +88,10 @@ function botonClick3() {
 
   console.log('funciona!');
   
-  saldos1.push(number3 * 0.25);
-  saldos2.push(number3 * 0.25);
-  saldos3.push(number3 - (number3 * 1.75));
-  saldos4.push(number3 * 0.25);
+  saldos1.push(number3 - (number3 + number3 / 4));
+  saldos2.push(number3 - (number3 + number3 / 4));
+  saldos3.push(number3 - (number3 / 4));
+  saldos4.push(number3 - (number3 + number3 / 4));
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -90,10 +102,10 @@ function botonClick4() {
   let number4 = Number(input4.value);
   console.log('funciona!');
   
-  saldos1.push(number4 * 0.25);
-  saldos2.push(number4 * 0.25);
-  saldos3.push(number4 * 0.25);
-  saldos4.push(number4 - (number4 * 1.75));
+  saldos1.push(number4 - (number4 + number4 / 4));
+  saldos2.push(number4 - (number4 + number4 / 4));
+  saldos3.push(number4 - (number4 + number4 / 4));
+  saldos4.push(number4 - (number4 / 4));
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
