@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manipulación del DOM básica - Curso Práctico de JavaScript</title>
+    <title>Divisor de gastos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Manipulación del DOM básica</h1>
-
-    <input id="calculo1" placeholder="escribe algo aqui">
-    <input id="calculo2" placeholder="escribe algo aqui">
-    <button id="btn-c
-    alcular">Calcular</button>
     
-    <p id="result"></p>
+    <h1>Divisor de gastos</h1>
+    <div id="inputs">
+      <label for="calculo1">
+        Persona 1: <input id="calculo1" type="number" placeholder="ingresar numero">
+      </label>
+      <button id="btn-calcular1" class="calcular">Calcular</button>
+      <label for="calculo2">
+        Persona 2: <input id="calculo2" type="number" placeholder="ingresar numero">
+      </label>
+      <button id="btn-calcular2" class="calcular">Calcular</button>
+      <label for="calculo3">
+        Persona 3: <input id="calculo3" type="number" placeholder="ingresar numero">
+      </label>
+      <button id="btn-calcular3" class="calcular">Calcular</button>
+      <label for="calculo4">
+        Persona 4: <input id="calculo4" type="number" placeholder="ingresar numero">
+      </label>
+      <button id="btn-calcular4" class="calcular">Calcular</button>
+    </div>
+    
+    
+    <p>P1: <span id="person1"></span></p>
+    <p>P2: <span id="person2"></span></p>
+    <p>P3: <span id="person3"></span></p>
+    <p>P4: <span id="person4"></span></p>
 
-    <script src="./script.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>
