@@ -1,9 +1,15 @@
-#inputs {
+#names-test {
   display: flex;
   flex-direction: column;
 }
-.calcular {
-  width: 248px;
+
+.btn-calcular0, 
+.btn-calcular1, 
+.btn-calcular2,  
+.btn-calcular3, 
+.btn-calcular4,  
+.btn-calcular5  {
+  width: 150px;
   margin: 5px 0;
 }
 
