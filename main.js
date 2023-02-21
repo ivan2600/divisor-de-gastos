@@ -16,6 +16,7 @@ const person1 = document.querySelector('#person1');
 const person2 = document.querySelector('#person2');
 const person3 = document.querySelector('#person3');
 const person4 = document.querySelector('#person4');
+const namesTest = document.querySelector('#names-test');
 const users = [];
 
 addUser.addEventListener('click', addNewUser);
@@ -34,6 +35,7 @@ function addNewUser() {
   });
   names();
   console.log(users);
+  //renderNames(users);
 }
 
 function names() {
@@ -117,3 +119,12 @@ function botonClick4() {
   mostrarResultados();
   mostrarEnConsola();
 }
+/*
+function renderNames(arr) {
+  let i = users.length-1;
+  const userLabel = document.createElement('p');
+  userLabel.classList.add('names');
+  userLabel.innerText = arr[i].name;
+  namesTest.appendChild(userLabel);
+}
+*/
