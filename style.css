@@ -1,6 +1,31 @@
+body {
+  background-color: rgb(256, 226, 60);
+  font-family: 'Tilt Neon', cursive;
+}
+
 #names-test {
   display: flex;
   flex-direction: column;
+}
+
+input {
+  position: absolute;
+  left: 80px;
+}
+
+#add-user {
+  position: relative;
+  top: 25px;
+  margin-bottom: 50px;
+}
+
+.persona0,
+.persona1,
+.persona2,
+.persona3,
+.persona4,
+.persona5 {
+  margin-bottom: 10px;
 }
 
 .btn-calcular0, 
@@ -10,9 +35,6 @@
 .btn-calcular4,  
 .btn-calcular5  {
   width: 150px;
-  margin: 5px 0;
+  margin: 5px 0px;
 }
 
-#add-user {
-  margin-bottom: 30px;
-}
