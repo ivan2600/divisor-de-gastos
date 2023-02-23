@@ -21,6 +21,12 @@ namesTest.addEventListener('click', e => {
   if(e.target.classList.contains('btn-calcular3')){
     botonClick3();
   }
+  if(e.target.classList.contains('btn-calcular4')){
+    botonClick4();
+  }
+  if(e.target.classList.contains('btn-calcular5')){
+    botonClick5();
+  }
 })
 
 function addNewUser() {
@@ -36,43 +42,48 @@ function addNewUser() {
   renderInputs(users);
 }
 
-function calcularSaldos() {
-  users[0].total = users[0].saldo.reduce((a, b) => a + b, 0);
-  users[1].total = users[1].saldo.reduce((a, b) => a + b, 0);
-  users[2].total = users[2].saldo.reduce((a, b) => a + b, 0);
-  users[3].total = users[3].saldo.reduce((a, b) => a + b, 0);
+function distribuirGasto(usuario, numero) {
+  let porcentaje = numero / users.length;
+  for (let i = 0; i < users.length; i++) {
+    if (usuario == i) {
+      users[i].saldo.push(porcentaje * (users.length -1));
+    } else {
+      users[i].saldo.push(porcentaje - (porcentaje * 2));
+    }
+  }
+  console.log(porcentaje);
+  console.log(users);
 }
 
-//for (resultado of arr)
+function calcularSaldos() {
+  for (let i = 0; i < users.length; i++) {
+    users[i].total = (users[i].saldo.reduce((a, b) => a + b, 0)).toFixed(2);
+  }
+}
 
 function mostrarResultados() {
-  const person0 = document.querySelector('.persona0');
-  const person1 = document.querySelector('.persona1');
-  const person2 = document.querySelector('.persona2');
-  const person3 = document.querySelector('.persona3');
-  const person4 = document.querySelector('.persona4');
-  person0.innerText = "Total: $ " + users[0].total;
-  person1.innerText = "Total: $ " + users[1].total;
-  person2.innerText = "Total: $ " + users[2].total;
-  person3.innerText = "Total: $ " + users[3].total;
-  person4.innerText = "Total: $ " + users[4].total;
+  for (let i = 0; i < users.length; i++) {
+    const person = document.querySelector(`.persona${i}`);
+    person.innerText = "Total: $ " + users[i].total;
+  }
 }
 
 function mostrarEnConsola() {
-  console.log(users[0].saldo, users[1].saldo, users[2].saldo, users[3].saldo);
-  console.log(users[0].total, users[1].total, users[2].total, users[3].total);
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i].saldo);
+    console.log(users[i].total);
+  }
 }
 
 function botonClick0() {
   const input0 = document.querySelector('#calculo0');
   let number0 = Number(input0.value);
+  let usuario = 0;
 
-  console.log('funciona!');
+  console.log('usuario 0');
 
-  users[0].saldo.push(number0 - (number0 / 4));
-  users[1].saldo.push(number0 - (number0 + number0 / 4));
-  users[2].saldo.push(number0 - (number0 + number0 / 4));
-  users[3].saldo.push(number0 - (number0 + number0 / 4));
+  distribuirGasto(usuario, number0);
+
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -81,13 +92,12 @@ function botonClick0() {
 function botonClick1() {
   const input1 = document.querySelector('#calculo1');
   let number1 = Number(input1.value);
+  let usuario = 1;
 
-  console.log('funciona!');
+  console.log('usuario 1');
 
-  users[0].saldo.push(number1 - (number1 + number1 / 4));
-  users[1].saldo.push(number1 - (number1 / 4));
-  users[2].saldo.push(number1 - (number1 + number1 / 4));
-  users[3].saldo.push(number1 - (number1 + number1 / 4));
+  distribuirGasto(usuario, number1);
+
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -96,13 +106,12 @@ function botonClick1() {
 function botonClick2() {
   const input2 = document.querySelector('#calculo2');
   let number2 = Number(input2.value);
+  let usuario = 2;
 
-  console.log('funciona!');
-  
-  users[0].saldo.push(number2 - (number2 + number2 / 4));
-  users[1].saldo.push(number2 - (number2 + number2 / 4));
-  users[2].saldo.push(number2 - (number2 / 4));
-  users[3].saldo.push(number2 - (number2 + number2 / 4));
+  console.log('usuario 2');
+
+  distribuirGasto(usuario, number2);
+
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
@@ -111,11 +120,40 @@ function botonClick2() {
 function botonClick3() {
   const input3 = document.querySelector('#calculo3');
   let number3 = Number(input3.value);
-  console.log('funciona!');3  
-  users[0].saldo.push(number3 - (number3 + number3 / 4));
-  users[1].saldo.push(number3 - (number3 + number3 / 4));
-  users[2].saldo.push(number3 - (number3 + number3 / 4));
-  users[3].saldo.push(number3 - (number3 / 4));
+  let usuario = 3;
+
+  console.log('usuario 3');
+
+  distribuirGasto(usuario, number3);
+
+  calcularSaldos();
+  mostrarResultados();
+  mostrarEnConsola();
+}
+
+function botonClick4() {
+  const input4 = document.querySelector('#calculo4');
+  let number4 = Number(input4.value);
+  let usuario = 4;
+
+  console.log('usuario 4');
+
+  distribuirGasto(usuario, number4);
+
+  calcularSaldos();
+  mostrarResultados();
+  mostrarEnConsola();
+}
+
+function botonClick5() {
+  const input5 = document.querySelector('#calculo5');
+  let number5 = Number(input5.value);
+  let usuario = 5;
+
+  console.log('usuario 5');
+
+  distribuirGasto(usuario, number5);
+
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
