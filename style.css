@@ -25,6 +25,7 @@ header {
   position: absolute;
   left: 270px;
   margin-bottom: 50px;
+  width: 130px;
 }
 
 .persona0,
@@ -36,6 +37,13 @@ header {
   margin-bottom: 10px;
   position: relative;
   bottom: 20px;
+}
+
+button {
+  border-radius: 50px;
+  border: none;
+  height: 20px;
+  background-color: rgb(187, 147, 16);
 }
 
 .btn-calcular0, 
