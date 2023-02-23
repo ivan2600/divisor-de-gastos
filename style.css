@@ -10,12 +10,20 @@ body {
 
 input {
   position: absolute;
-  left: 80px;
+  left: 84px;
+}
+
+header {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(241, 189, 18);
 }
 
 #add-user {
-  position: relative;
-  top: 25px;
+  position: absolute;
+  left: 270px;
   margin-bottom: 50px;
 }
 
