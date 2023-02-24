@@ -43,7 +43,14 @@ function calcularSaldos() {
 function mostrarResultados() {
   for (let i = 0; i < users.length; i++) {
     const person = document.querySelector(`.persona${i}`);
-    person.innerText = "Total: $ " + users[i].total;
+    let resultado = users[i].total;
+    if (resultado > 0) {
+      person.innerText = "Tiene que recibir $ " + resultado;
+    } else if (resultado < 0) {
+      person.innerText = "Tiene que dar $ " + resultado;
+    } else {
+      person.innerText = "Está en cero";
+    }
   }
 }
 

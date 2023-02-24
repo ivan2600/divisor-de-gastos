@@ -11,6 +11,10 @@ body {
 input {
   position: absolute;
   left: 84px;
+  border: none;
+  border-radius: 3px;
+  height: 20px;
+  background-color: rgb(253, 251, 110);
 }
 
 header {
@@ -28,13 +32,6 @@ header {
   width: 130px;
 }
 
-/* .persona0,
-.persona1,
-.persona2,
-.persona3,
-.persona4,
-.persona5  */
-
 .total {
   margin-bottom: 10px;
   position: relative;
@@ -48,12 +45,6 @@ button {
   background-color: rgb(187, 147, 16);
 }
 
-/* .btn-calcular0, 
-.btn-calcular1, 
-.btn-calcular2,  
-.btn-calcular3, 
-.btn-calcular4,  
-.btn-calcular5  { */
 .calcular {  
   width: 100px;
   margin: 5px 0px;
