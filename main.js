@@ -1,31 +1,14 @@
 const addUser = document.querySelector('#add-user');
 const userName = document.querySelector('#new-user');
-const btn1 = document.querySelector('#btn-calcular1');
-const btn2 = document.querySelector('#btn-calcular2');
-const btn3 = document.querySelector('#btn-calcular3');
-const btn4 = document.querySelector('#btn-calcular4');
 const namesTest = document.querySelector('#names-test');
 const users = [];
 
 addUser.addEventListener('click', addNewUser);
 namesTest.addEventListener('click', e => {
-  if(e.target.classList.contains('btn-calcular0')){
-    botonClick0();
-  }
-  if(e.target.classList.contains('btn-calcular1')){
-    botonClick1();
-  }
-  if(e.target.classList.contains('btn-calcular2')){
-    botonClick2();
-  }
-  if(e.target.classList.contains('btn-calcular3')){
-    botonClick3();
-  }
-  if(e.target.classList.contains('btn-calcular4')){
-    botonClick4();
-  }
-  if(e.target.classList.contains('btn-calcular5')){
-    botonClick5();
+  for (let i = 0; i < users.length; i++) {
+    if(e.target.classList.contains(`btn-calcular${i}`)){
+      botonClick(i);
+    }
   }
 })
 
@@ -37,8 +20,6 @@ function addNewUser() {
     saldo: [],
     total: 0
   });
-  
-  console.log(users);
   renderInputs(users);
 }
 
@@ -51,8 +32,6 @@ function distribuirGasto(usuario, numero) {
       users[i].saldo.push(porcentaje - (porcentaje * 2));
     }
   }
-  console.log(porcentaje);
-  console.log(users);
 }
 
 function calcularSaldos() {
@@ -75,84 +54,13 @@ function mostrarEnConsola() {
   }
 }
 
-function botonClick0() {
-  const input0 = document.querySelector('#calculo0');
-  let number0 = Number(input0.value);
-  let usuario = 0;
+function botonClick(test) {
+  const input = document.querySelector(`#calculo${test}`);
+  let gasto = Number(input.value);
 
-  console.log('usuario 0');
+  console.log(`Usuario ${test}`);
 
-  distribuirGasto(usuario, number0);
-
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-}
-
-function botonClick1() {
-  const input1 = document.querySelector('#calculo1');
-  let number1 = Number(input1.value);
-  let usuario = 1;
-
-  console.log('usuario 1');
-
-  distribuirGasto(usuario, number1);
-
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-}
-
-function botonClick2() {
-  const input2 = document.querySelector('#calculo2');
-  let number2 = Number(input2.value);
-  let usuario = 2;
-
-  console.log('usuario 2');
-
-  distribuirGasto(usuario, number2);
-
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-}
-
-function botonClick3() {
-  const input3 = document.querySelector('#calculo3');
-  let number3 = Number(input3.value);
-  let usuario = 3;
-
-  console.log('usuario 3');
-
-  distribuirGasto(usuario, number3);
-
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-}
-
-function botonClick4() {
-  const input4 = document.querySelector('#calculo4');
-  let number4 = Number(input4.value);
-  let usuario = 4;
-
-  console.log('usuario 4');
-
-  distribuirGasto(usuario, number4);
-
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-}
-
-function botonClick5() {
-  const input5 = document.querySelector('#calculo5');
-  let number5 = Number(input5.value);
-  let usuario = 5;
-
-  console.log('usuario 5');
-
-  distribuirGasto(usuario, number5);
+  distribuirGasto(test, gasto);
 
   calcularSaldos();
   mostrarResultados();
@@ -177,11 +85,10 @@ function renderInputs(arr) {
   labelTag.appendChild(inputTag);
 
   const buttonTag = document.createElement('button');
-  buttonTag.setAttribute('class', `btn-calcular${i}`);
-  //buttonTag.setAttribute('class', 'calcular');
+  buttonTag.setAttribute('class', `btn-calcular${i} calcular`);
   buttonTag.innerText = 'Calcular';
   const spanTotal = document.createElement('span');
-  spanTotal.setAttribute('class', `persona${i}`);
+  spanTotal.setAttribute('class', `persona${i} total`);
   spanTotal.innerText = "Total: $ 0.00";
 
   namesTest.appendChild(buttonTag);
