@@ -41,12 +41,16 @@ function calcularSaldos() {
 }
 
 function mostrarResultados() {
+  
   for (let i = 0; i < users.length; i++) {
     const person = document.querySelector(`.persona${i}`);
+    
     let resultado = users[i].total;
     if (resultado > 0) {
       person.innerText = "Tiene que recibir $ " + resultado;
+      person.setAttribute('style', `color: green;`);
     } else if (resultado < 0) {
+      person.setAttribute('style', `color: red;`);
       person.innerText = "Tiene que dar $ " + resultado;
     } else {
       person.innerText = "Está en cero";
