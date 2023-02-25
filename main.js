@@ -21,6 +21,7 @@ function addNewUser() {
     total: 0
   });
   renderInputs(users);
+  document.getElementById("formulario").reset();
 }
 
 function distribuirGasto(usuario, numero) {
@@ -41,7 +42,6 @@ function calcularSaldos() {
 }
 
 function mostrarResultados() {
-  
   for (let i = 0; i < users.length; i++) {
     const person = document.querySelector(`.persona${i}`);
     
@@ -54,6 +54,7 @@ function mostrarResultados() {
       person.innerText = "Tiene que dar $ " + resultado;
     } else {
       person.innerText = "Está en cero";
+      person.setAttribute('style', `color: black;`);
     }
   }
 }
