@@ -77,11 +77,14 @@ function botonClick(test) {
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
+  document.getElementById('reset-input').reset();
 }
 
 function renderInputs(arr) {
   let i = users.length-1;
 
+  const formTag = document.createElement('form');
+  formTag.setAttribute('id', 'reset-input');
   const labelTag = document.createElement('label');
   labelTag.setAttribute('for', `calculo${i}`);
   const spanTag = document.createElement('span');
@@ -92,7 +95,8 @@ function renderInputs(arr) {
   inputTag.setAttribute('type', 'number');
   inputTag.setAttribute('placeholder', 'ingresar numero');
 
-  namesTest.appendChild(labelTag);
+  namesTest.appendChild(formTag);
+  formTag.appendChild(labelTag);
   labelTag.appendChild(spanTag);
   labelTag.appendChild(inputTag);
 
