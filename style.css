@@ -13,7 +13,7 @@ input {
   left: 90px;
   border: none;
   border-radius: 3px;
-  height: 20px;
+  height: 22px;
   background-color: rgb(253, 251, 110);
 }
 
@@ -29,21 +29,23 @@ header {
   position: relative;
   left: 250px;
   bottom: 20px;
-  
   width: 130px;
 }
 
 .total {
-  margin-bottom: 10px;
   position: relative;
   bottom: 20px;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
 }
 
 button {
   border-radius: 50px;
   border: none;
-  height: 20px;
-  background-color: rgb(187, 147, 16);
+  height: 24px;
+  background-color: rgb(253, 251, 110);
+  font-family: 'Tilt Neon', cursive;
+  border: 3px solid rgb(187, 147, 16);
 }
 
 .calcular {  
