@@ -5,6 +5,17 @@ const users = [];
 
 addUser.addEventListener('click', addNewUser);
 
+namesTest.addEventListener('keydown', e => {
+  for (let i = 0; i < users.length; i++) {
+    if(e.target.classList.contains(`inputgasto${i}`)){
+      if (e.keyCode == 13) {
+        botonClick(i);
+        document.querySelector(`.btn-calcular${i}`).focus();
+      }
+    }
+  }
+})
+
 namesTest.addEventListener('click', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`btn-calcular${i}`)){
@@ -12,16 +23,6 @@ namesTest.addEventListener('click', e => {
     }
   }
 })
-
-// document.getElementById('new-user').addEventListener('keydown', inputCharacters);
-
-// function inputCharacters(event) {
- 
-//   if (event.keyCode == 13) {
-//     document.getElementById('add-user').focus();
-//   }
-
-// }
 
 function addNewUser() {
   let newUser = userName.value;
@@ -99,14 +100,14 @@ function botonClick(test) {
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
-  document.getElementById('reset-input').reset();
+  document.getElementById(`reset-input${test}`).reset();
 }
 
 function renderInputs(arr) {
   let i = users.length-1;
 
   const formTag = document.createElement('form');
-  formTag.setAttribute('id', 'reset-input');
+  formTag.setAttribute('id', `reset-input${i}`);
   formTag.setAttribute('action', '#');
   const labelTag = document.createElement('label');
   labelTag.setAttribute('for', `calculo${i}`);
@@ -115,6 +116,7 @@ function renderInputs(arr) {
   spanTag.innerText = arr[i].name + ": ";
   const inputTag = document.createElement('input');
   inputTag.setAttribute('id', `calculo${i}`);
+  inputTag.setAttribute('class', `inputgasto${i}`);
   inputTag.setAttribute('type', 'number');
   inputTag.setAttribute('placeholder', 'ingresar numero');
 
