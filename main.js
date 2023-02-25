@@ -4,6 +4,7 @@ const namesTest = document.querySelector('#names-test');
 const users = [];
 
 addUser.addEventListener('click', addNewUser);
+
 namesTest.addEventListener('click', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`btn-calcular${i}`)){
@@ -12,16 +13,37 @@ namesTest.addEventListener('click', e => {
   }
 })
 
+// document.getElementById('new-user').addEventListener('keydown', inputCharacters);
+
+// function inputCharacters(event) {
+ 
+//   if (event.keyCode == 13) {
+//     document.getElementById('add-user').focus();
+//   }
+
+// }
+
 function addNewUser() {
   let newUser = userName.value;
-
-  users.push({
+  if (newUser) {
+    users.push({
     name: newUser,
     saldo: [],
     total: 0
-  });
-  renderInputs(users);
+    });  
+    renderInputs(users);
+  } else {
+    alert('Escriba un nombre');
+  }
+  
   document.getElementById("formulario").reset();
+  
+  document.getElementById('new-user').addEventListener('keydown', inputCharacters);
+  function inputCharacters(event) {
+    if (event.keyCode == 13) {
+      document.getElementById('add-user').focus();
+    }
+  }
 }
 
 function distribuirGasto(usuario, numero) {
@@ -85,6 +107,7 @@ function renderInputs(arr) {
 
   const formTag = document.createElement('form');
   formTag.setAttribute('id', 'reset-input');
+  formTag.setAttribute('action', '#');
   const labelTag = document.createElement('label');
   labelTag.setAttribute('for', `calculo${i}`);
   const spanTag = document.createElement('span');
