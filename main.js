@@ -106,9 +106,12 @@ function botonClick(test) {
 function renderInputs(arr) {
   let i = users.length-1;
 
+  const userContainer = document.createElement('div')
+  userContainer.setAttribute('class', 'user-container');
   const formTag = document.createElement('form');
   formTag.setAttribute('id', `reset-input${i}`);
   formTag.setAttribute('action', '#');
+  formTag.setAttribute('class', 'form');
   const labelTag = document.createElement('label');
   labelTag.setAttribute('for', `calculo${i}`);
   const spanTag = document.createElement('span');
@@ -120,7 +123,9 @@ function renderInputs(arr) {
   inputTag.setAttribute('type', 'number');
   inputTag.setAttribute('placeholder', 'ingresar numero');
 
-  namesTest.appendChild(formTag);
+  namesTest.appendChild(userContainer);
+  userContainer.appendChild(formTag);
+
   formTag.appendChild(labelTag);
   labelTag.appendChild(spanTag);
   labelTag.appendChild(inputTag);
@@ -131,8 +136,12 @@ function renderInputs(arr) {
   const spanTotal = document.createElement('span');
   spanTotal.setAttribute('class', `persona${i} total`);
   spanTotal.innerText = "Total: $ 0.00";
+  const buttonPagar = document.createElement('button');
+  buttonPagar.setAttribute('class', `btn-pagar${i} pagar`);
+  buttonPagar.innerText = 'Pagar';
 
-  namesTest.appendChild(buttonTag);
-  namesTest.appendChild(spanTotal);
+  userContainer.appendChild(buttonTag);
+  userContainer.appendChild(spanTotal);
+  userContainer.appendChild(buttonPagar);
 }
 
