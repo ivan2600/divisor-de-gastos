@@ -34,6 +34,8 @@ header {
 }
 
 .total {
+  display: inline-block;
+  width: 200px;
   position: relative;
   left: -100px;
   top: 3px;
@@ -66,7 +68,7 @@ button {
   width: 100px;
   margin: 5px 0px;
   position: relative;
-  left: 79px;
+  right: 36px;
   top: 3px;
 }
 

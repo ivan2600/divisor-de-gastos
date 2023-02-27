@@ -21,6 +21,9 @@ namesTest.addEventListener('click', e => {
     if(e.target.classList.contains(`btn-calcular${i}`)){
       botonClick(i);
     }
+    if(e.target.classList.contains(`btn-pagar${i}`)){
+      botonPagar(i);
+    }
   }
 })
 
@@ -101,6 +104,19 @@ function botonClick(test) {
   mostrarResultados();
   mostrarEnConsola();
   document.getElementById(`reset-input${test}`).reset();
+}
+
+function botonPagar(usuario) {
+  const input = document.querySelector(`#calculo${usuario}`);
+  let pago = Number(input.value);
+  console.log(`Usuario ${usuario}`, pago);
+
+  users[usuario].saldo.push(pago);
+
+  calcularSaldos();
+  mostrarResultados();
+  mostrarEnConsola();
+  document.getElementById(`reset-input${usuario}`).reset();
 }
 
 function renderInputs(arr) {
