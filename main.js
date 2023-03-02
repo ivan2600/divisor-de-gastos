@@ -4,6 +4,8 @@ const namesTest = document.querySelector('#names-test');
 const seleccionar = document.querySelector('#selection');
 const quienRecibe = [];
 const users = [];
+let pago;
+let personaQueEstaPagando;
 
 const quienRecibeDepurado = [];
 
@@ -125,6 +127,11 @@ function botonClick(test) {
 
 function botonPagar(usuario) {
   renderCheckbox(users);
+
+  const input = document.querySelector(`#calculo${usuario}`);
+  pago = Number(input.value);
+
+  personaQueEstaPagando = usuario;
   //deberia tomar el valor del pago desde aca
 }
 
@@ -143,20 +150,18 @@ function botonSeleccionar() {
       quienRecibeDepurado.push(i);
     }
   }
-//  console.log(quienRecibeDepurado);
+  //console.log(quienRecibeDepurado);
 
   let cantEnQueSeReparteElPago = quienRecibe.length;
-
+  
   for (let i = 0; i < users.length; i++) {
     if (quienRecibeDepurado[i] == i) {
-      const input = document.querySelector(`#calculo${i}`);
-      let pago = Number(input.value);
-      //console.log(`Usuario ${i}`, pago);
-
-      users[i].saldo.push(pago / cantEnQueSeReparteElPago);
-      document.getElementById(`reset-input${i}`).reset();
+    let monto = pago / cantEnQueSeReparteElPago;
+    users[i].saldo.push(monto - (monto * 2));
     }
   }
+  users[personaQueEstaPagando].saldo.push(pago);
+  document.getElementById(`reset-input${personaQueEstaPagando}`).reset();
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
