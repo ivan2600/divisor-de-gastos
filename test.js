@@ -1,8 +1,9 @@
-const botonEnviar = document.getElementById('enviar');
-const unInput = document.getElementById('dato');
-
-botonEnviar.addEventListener('click', resetearInput);
-
-function resetearInput () {
-  console.log(unInput.value);
-}
+function alertaChecked(){ 
+  alert(document.miFormulario.miCheck.checked);
+} 
+function alertaValue(){ 
+  alert(document.miFormulario.miCheck.value);
+} 
+function metodoClick(){ 
+  document.miFormulario.miCheck.click();
+} 

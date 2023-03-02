@@ -1,7 +1,11 @@
 const addUser = document.querySelector('#add-user');
 const userName = document.querySelector('#new-user');
 const namesTest = document.querySelector('#names-test');
+const seleccionar = document.querySelector('#selection');
+const quienRecibe = [];
 const users = [];
+
+const quienRecibeDepurado = [];
 
 addUser.addEventListener('click', addNewUser);
 
@@ -24,6 +28,19 @@ namesTest.addEventListener('click', e => {
     if(e.target.classList.contains(`btn-pagar${i}`)){
       botonPagar(i);
     }
+  }
+})
+
+seleccionar.addEventListener('click', e => {
+  for (let i = 0; i < users.length; i++) {
+    if(e.target.classList.contains(`inputwho${i}`)){
+      // quienRecibe[i].push(i)
+      reconocerCheckbox(i);
+    }
+    
+  }
+  if(e.target.classList.contains(`seleccionar`)){
+    botonSeleccionar();
   }
 })
 
@@ -107,22 +124,48 @@ function botonClick(test) {
 }
 
 function botonPagar(usuario) {
-  const input = document.querySelector(`#calculo${usuario}`);
-  let pago = Number(input.value);
-  console.log(`Usuario ${usuario}`, pago);
+  renderCheckbox(users);
+  //deberia tomar el valor del pago desde aca
+}
 
-  users[usuario].saldo.push(pago);
+function reconocerCheckbox(usuario) {
+  
+  if (document.getElementById(`wich-user${usuario}`).checked){
+    quienRecibe.push(usuario);
+  }    
+  
+}
 
+function botonSeleccionar() {
+  
+  for (let i = 0; i < users.length; i++) {
+    if (quienRecibe.includes(i)) {
+      quienRecibeDepurado.push(i);
+    }
+  }
+//  console.log(quienRecibeDepurado);
+
+  let cantEnQueSeReparteElPago = quienRecibe.length;
+
+  for (let i = 0; i < users.length; i++) {
+    if (quienRecibeDepurado[i] == i) {
+      const input = document.querySelector(`#calculo${i}`);
+      let pago = Number(input.value);
+      //console.log(`Usuario ${i}`, pago);
+
+      users[i].saldo.push(pago / cantEnQueSeReparteElPago);
+      document.getElementById(`reset-input${i}`).reset();
+    }
+  }
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
-  document.getElementById(`reset-input${usuario}`).reset();
 }
 
 function renderInputs(arr) {
   let i = users.length-1;
 
-  const userContainer = document.createElement('div')
+  const userContainer = document.createElement('div');
   userContainer.setAttribute('class', 'user-container');
   const formTag = document.createElement('form');
   formTag.setAttribute('id', `reset-input${i}`);
@@ -161,3 +204,25 @@ function renderInputs(arr) {
   userContainer.appendChild(buttonPagar);
 }
 
+function renderCheckbox(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    const selectionContainer = document.getElementById('selection');
+    const whoDiv = document.createElement('div');
+    whoDiv.setAttribute('class', 'who-container');
+    const labelWho = document.createElement('label');
+    labelWho.setAttribute('for', 'user-to-pay');
+    const inputWho = document.createElement('input');
+    inputWho.setAttribute('id', `wich-user${i}`);
+    inputWho.setAttribute('class', `inputwho${i} inputwho`);
+    inputWho.setAttribute('type', 'checkbox');
+    const pWho = document.createElement('p');
+    pWho.setAttribute('id', `usuario-paga${i}`);
+
+    selectionContainer.appendChild(whoDiv);
+    whoDiv.appendChild(labelWho);
+    labelWho.appendChild(inputWho);
+    labelWho.appendChild(pWho);
+
+    pWho.innerText = arr[i].name;
+  }
+}
