@@ -4,11 +4,10 @@ const namesTest = document.querySelector('#names-test');
 const seleccionar = document.querySelector('#selection');
 const whoPayDiv = document.querySelector('#who-pay');
 const quienRecibe = [];
+const quienRecibeDepurado = [];
 const users = [];
 let pago;
 let personaQueEstaPagando;
-
-const quienRecibeDepurado = [];
 
 addUser.addEventListener('click', addNewUser);
 
@@ -157,16 +156,6 @@ function reiniciarQuienRecibeArr() {
   }
 }
 
-// function uncheckAll() {
-//   var inputs = document.querySelectorAll('.check2');
-//   for (var i = 0; i < inputs.length; i++) {
-//       inputs[i].checked = false;
-//     }
-//   }
-//   window.onload = function() {
-//   window.addEventListener('load', checkAll, false);
-// }
-
 function botonSeleccionar() {
   
   for (let i = 0; i < users.length; i++) {
@@ -174,7 +163,6 @@ function botonSeleccionar() {
       quienRecibeDepurado.push(i);
     }
   }
-  //console.log(quienRecibeDepurado);
 
   let cantEnQueSeReparteElPago = quienRecibe.length;
   
@@ -256,14 +244,6 @@ function renderCheckbox(arr) {
     pWho.innerText = arr[i].name;
   }
 }
-
-/* <div id="who-pay">
-  <h2>¿a quien se le paga?</h2>
-  <div id="selection">
-
-  </div>
-  <button class="seleccionar">Seleccionar</button>
-</div> */
 
 function renderWhoPayDiv() {
   const whoPaySectionDiv = document.getElementById('who-pay');
