@@ -2,6 +2,7 @@ const addUser = document.querySelector('#add-user');
 const userName = document.querySelector('#new-user');
 const namesTest = document.querySelector('#names-test');
 const seleccionar = document.querySelector('#selection');
+const whoPayDiv = document.querySelector('#who-pay');
 const quienRecibe = [];
 const users = [];
 let pago;
@@ -36,11 +37,11 @@ namesTest.addEventListener('click', e => {
 seleccionar.addEventListener('click', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`inputwho${i}`)){
-      // quienRecibe[i].push(i)
       reconocerCheckbox(i);
     }
-    
   }
+})
+whoPayDiv.addEventListener('click', e => {
   if(e.target.classList.contains(`seleccionar`)){
     botonSeleccionar();
   }
@@ -123,25 +124,46 @@ function botonClick(test) {
   mostrarResultados();
   mostrarEnConsola();
   document.getElementById(`reset-input${test}`).reset();
+  pago = 0;
+  personaQueEstaPagando = 0;
+  reiniciarQuienRecibeArr();
 }
 
 function botonPagar(usuario) {
+  renderWhoPayDiv();
   renderCheckbox(users);
 
   const input = document.querySelector(`#calculo${usuario}`);
   pago = Number(input.value);
 
   personaQueEstaPagando = usuario;
-  //deberia tomar el valor del pago desde aca
+  reiniciarQuienRecibeArr();
 }
 
 function reconocerCheckbox(usuario) {
-  
   if (document.getElementById(`wich-user${usuario}`).checked){
     quienRecibe.push(usuario);
   }    
-  
 }
+
+function reiniciarQuienRecibeArr() {
+  for (let i = quienRecibeDepurado.length; i > 0; i--) {
+    quienRecibeDepurado.pop();    
+  }
+  for (let i = quienRecibe.length; i > 0; i--) {
+    quienRecibe.pop();    
+  }
+}
+
+// function uncheckAll() {
+//   var inputs = document.querySelectorAll('.check2');
+//   for (var i = 0; i < inputs.length; i++) {
+//       inputs[i].checked = false;
+//     }
+//   }
+//   window.onload = function() {
+//   window.addEventListener('load', checkAll, false);
+// }
 
 function botonSeleccionar() {
   
@@ -230,4 +252,18 @@ function renderCheckbox(arr) {
 
     pWho.innerText = arr[i].name;
   }
+}
+
+/* <div id="who-pay">
+  <h2>¿a quien se le paga?</h2>
+  <div id="selection">
+
+  </div>
+  <button class="seleccionar">Seleccionar</button>
+</div> */
+
+function renderWhoPayDiv() {
+  const WhoPaySectionDiv = document.createElement('div');
+  WhoPaySectionDiv.setAttribute('id', 'who-pay');
+  const h2Who = document.createElement('h2');
 }
