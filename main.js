@@ -34,14 +34,12 @@ namesTest.addEventListener('click', e => {
   }
 })
 
-seleccionar.addEventListener('click', e => {
+whoPayDiv.addEventListener('click', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`inputwho${i}`)){
       reconocerCheckbox(i);
     }
   }
-})
-whoPayDiv.addEventListener('click', e => {
   if(e.target.classList.contains(`seleccionar`)){
     botonSeleccionar();
   }
@@ -130,12 +128,16 @@ function botonClick(test) {
 }
 
 function botonPagar(usuario) {
-  renderWhoPayDiv();
-  renderCheckbox(users);
-
   const input = document.querySelector(`#calculo${usuario}`);
   pago = Number(input.value);
 
+  if (input.value) {
+    renderWhoPayDiv();
+    renderCheckbox(users);
+  } else {
+    alert('ingrese un numero');
+  }
+  
   personaQueEstaPagando = usuario;
   reiniciarQuienRecibeArr();
 }
@@ -187,6 +189,7 @@ function botonSeleccionar() {
   calcularSaldos();
   mostrarResultados();
   mostrarEnConsola();
+  removeWhoPayDiv()
 }
 
 function renderInputs(arr) {
@@ -263,7 +266,28 @@ function renderCheckbox(arr) {
 </div> */
 
 function renderWhoPayDiv() {
-  const WhoPaySectionDiv = document.createElement('div');
-  WhoPaySectionDiv.setAttribute('id', 'who-pay');
+  const whoPaySectionDiv = document.getElementById('who-pay');
   const h2Who = document.createElement('h2');
+  h2Who.setAttribute('id', 'who-title');
+  h2Who.innerText = '¿a quien se le paga?';
+  const whoDivSelection = document.createElement('div');
+  whoDivSelection.setAttribute('id', 'selection');
+  const seleccionarButton = document.createElement('button');
+  seleccionarButton.setAttribute('class', 'seleccionar');
+  seleccionarButton.innerText = 'Seleccionar';
+
+  whoPaySectionDiv.appendChild(h2Who);
+  whoPaySectionDiv.appendChild(whoDivSelection);
+  whoPaySectionDiv.appendChild(seleccionarButton);
+}
+
+function removeWhoPayDiv() {
+  const whoPaySectionDiv = document.getElementById('who-pay');
+  const h2Who = document.getElementById('who-title');
+  const whoDivSelection = document.getElementById('selection');
+  const seleccionarButton = document.querySelector('.seleccionar');
+
+  whoPaySectionDiv.removeChild(h2Who);
+  whoPaySectionDiv.removeChild(whoDivSelection);
+  whoPaySectionDiv.removeChild(seleccionarButton);
 }
