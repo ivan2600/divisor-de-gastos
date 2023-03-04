@@ -134,6 +134,7 @@ function botonClick(test) {
 function botonPagar(usuario) {
   const input = document.querySelector(`#calculo${usuario}`);
   pago = Number(input.value);
+  personaQueEstaPagando = usuario;
 
   if (input.value) {
     renderWhoPayDiv();
@@ -224,6 +225,7 @@ function renderInputs(arr) {
 
 function renderCheckbox(arr) {
   for (let i = 0; i < arr.length; i++) {
+    if (personaQueEstaPagando != i) {
       const selectionContainer = document.getElementById('selection');
       const whoDiv = document.createElement('div');
       whoDiv.setAttribute('class', 'who-container');
@@ -242,6 +244,7 @@ function renderCheckbox(arr) {
       labelWho.appendChild(pWho);
 
       pWho.innerText = arr[i].name;
+    }
   }
 }
 
