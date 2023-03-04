@@ -11,6 +11,12 @@ let personaQueEstaPagando;
 
 addUser.addEventListener('click', addNewUser);
 
+userName.addEventListener('keydown', e => {
+  if (e.keyCode == 13) {
+    addUser.focus();
+  }
+})
+
 namesTest.addEventListener('keydown', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`inputgasto${i}`)){
