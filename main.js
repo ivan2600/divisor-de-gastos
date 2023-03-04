@@ -223,7 +223,6 @@ function renderInputs(arr) {
 }
 
 function renderCheckbox(arr) {
-  
   for (let i = 0; i < arr.length; i++) {
       const selectionContainer = document.getElementById('selection');
       const whoDiv = document.createElement('div');
