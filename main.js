@@ -223,25 +223,26 @@ function renderInputs(arr) {
 }
 
 function renderCheckbox(arr) {
+  
   for (let i = 0; i < arr.length; i++) {
-    const selectionContainer = document.getElementById('selection');
-    const whoDiv = document.createElement('div');
-    whoDiv.setAttribute('class', 'who-container');
-    const labelWho = document.createElement('label');
-    labelWho.setAttribute('for', 'user-to-pay');
-    const inputWho = document.createElement('input');
-    inputWho.setAttribute('id', `wich-user${i}`);
-    inputWho.setAttribute('class', `inputwho${i} inputwho`);
-    inputWho.setAttribute('type', 'checkbox');
-    const pWho = document.createElement('p');
-    pWho.setAttribute('id', `usuario-paga${i}`);
+      const selectionContainer = document.getElementById('selection');
+      const whoDiv = document.createElement('div');
+      whoDiv.setAttribute('class', 'who-container');
+      const labelWho = document.createElement('label');
+      labelWho.setAttribute('for', 'user-to-pay');
+      const inputWho = document.createElement('input');
+      inputWho.setAttribute('id', `wich-user${i}`);
+      inputWho.setAttribute('class', `inputwho${i} inputwho`);
+      inputWho.setAttribute('type', 'checkbox');
+      const pWho = document.createElement('p');
+      pWho.setAttribute('id', `usuario-paga${i}`);
 
-    selectionContainer.appendChild(whoDiv);
-    whoDiv.appendChild(labelWho);
-    labelWho.appendChild(inputWho);
-    labelWho.appendChild(pWho);
+      selectionContainer.appendChild(whoDiv);
+      whoDiv.appendChild(labelWho);
+      labelWho.appendChild(inputWho);
+      labelWho.appendChild(pWho);
 
-    pWho.innerText = arr[i].name;
+      pWho.innerText = arr[i].name;
   }
 }
 
