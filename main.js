@@ -15,7 +15,6 @@ namesTest.addEventListener('keydown', e => {
   for (let i = 0; i < users.length; i++) {
     if(e.target.classList.contains(`inputgasto${i}`)){
       if (e.keyCode == 13) {
-        botonClick(i);
         document.querySelector(`.btn-calcular${i}`).focus();
       }
     }
@@ -157,20 +156,15 @@ function reiniciarQuienRecibeArr() {
 }
 
 function botonSeleccionar() {
-  
   for (let i = 0; i < users.length; i++) {
     if (quienRecibe.includes(i)) {
       quienRecibeDepurado.push(i);
     }
   }
-
-  let cantEnQueSeReparteElPago = quienRecibe.length;
-  
-  for (let i = 0; i < users.length; i++) {
-    if (quienRecibeDepurado[i] == i) {
+  let cantEnQueSeReparteElPago = quienRecibeDepurado.length;
+  for (let i = 0; i < quienRecibeDepurado.length; i++) {
     let monto = pago / cantEnQueSeReparteElPago;
-    users[i].saldo.push(monto - (monto * 2));
-    }
+    users[quienRecibeDepurado[i]].saldo.push(monto - (monto * 2));
   }
   users[personaQueEstaPagando].saldo.push(pago);
   document.getElementById(`reset-input${personaQueEstaPagando}`).reset();
