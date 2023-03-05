@@ -77,25 +77,24 @@ button {
   font-weight: bold;
 }
 
-#who-pay {
-  width: 80%;
+.who-desing {
+  width: 90%;
   padding: 15px;
   margin-bottom: 15px;
-  border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   justify-self: center;
+  background-color: rgb(241, 189, 18);
 }
 
 .x-close {
   width: 15px;
   border: 1px solid black;
   border-radius: 2px;
-
 }
 
 #who-title {
   margin-top: 3px;
-  background-color: rgb(241, 189, 18);
+  background-color: rgb(256, 226, 60);
   border-radius: 50px;
   text-align: center;
   padding: 3px;

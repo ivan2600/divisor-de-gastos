@@ -253,6 +253,7 @@ function renderCheckbox(arr) {
 
 function renderWhoPayDiv() {
   const whoPaySectionDiv = document.getElementById('who-pay');
+  whoPaySectionDiv.setAttribute('class', 'who-desing');
   const xClose = document.createElement('img');
   xClose.setAttribute('class', 'x-close');
   xClose.setAttribute('src', './x-close.png');
@@ -274,6 +275,7 @@ function renderWhoPayDiv() {
 
 function removeWhoPayDiv() {
   const whoPaySectionDiv = document.getElementById('who-pay');
+  whoPaySectionDiv.removeAttribute('class', 'who-desing');
   const h2Who = document.getElementById('who-title');
   const whoDivSelection = document.getElementById('selection');
   const seleccionarButton = document.querySelector('.seleccionar');
