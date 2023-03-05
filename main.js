@@ -47,6 +47,9 @@ whoPayDiv.addEventListener('click', e => {
   if(e.target.classList.contains(`seleccionar`)){
     botonSeleccionar();
   }
+  if(e.target.classList.contains(`x-close`)){
+    removeWhoPayDiv();
+  }
 })
 
 function addNewUser() {
@@ -250,6 +253,10 @@ function renderCheckbox(arr) {
 
 function renderWhoPayDiv() {
   const whoPaySectionDiv = document.getElementById('who-pay');
+  const xClose = document.createElement('img');
+  xClose.setAttribute('class', 'x-close');
+  xClose.setAttribute('src', './x-close.png');
+  xClose.setAttribute('alt', 'close');
   const h2Who = document.createElement('h2');
   h2Who.setAttribute('id', 'who-title');
   h2Who.innerText = '¿a quien se le paga?';
@@ -259,6 +266,7 @@ function renderWhoPayDiv() {
   seleccionarButton.setAttribute('class', 'seleccionar');
   seleccionarButton.innerText = 'Seleccionar';
 
+  whoPaySectionDiv.appendChild(xClose);
   whoPaySectionDiv.appendChild(h2Who);
   whoPaySectionDiv.appendChild(whoDivSelection);
   whoPaySectionDiv.appendChild(seleccionarButton);
@@ -269,7 +277,9 @@ function removeWhoPayDiv() {
   const h2Who = document.getElementById('who-title');
   const whoDivSelection = document.getElementById('selection');
   const seleccionarButton = document.querySelector('.seleccionar');
+  const xClose = document.querySelector('.x-close');
 
+  whoPaySectionDiv.removeChild(xClose);
   whoPaySectionDiv.removeChild(h2Who);
   whoPaySectionDiv.removeChild(whoDivSelection);
   whoPaySectionDiv.removeChild(seleccionarButton);
