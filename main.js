@@ -166,22 +166,27 @@ function reiniciarQuienRecibeArr() {
 }
 
 function botonSeleccionar() {
+
   for (let i = 0; i < users.length; i++) {
     if (quienRecibe.includes(i)) {
       quienRecibeDepurado.push(i);
+      }
     }
-  }
   let cantEnQueSeReparteElPago = quienRecibeDepurado.length;
-  for (let i = 0; i < quienRecibeDepurado.length; i++) {
-    let monto = pago / cantEnQueSeReparteElPago;
-    users[quienRecibeDepurado[i]].saldo.push(monto - (monto * 2));
+  if (quienRecibeDepurado.length < 1) {
+    alert('seleccione quien recibe el pago');
+  } else {
+    for (let i = 0; i < quienRecibeDepurado.length; i++) {
+      let monto = pago / cantEnQueSeReparteElPago;
+      users[quienRecibeDepurado[i]].saldo.push(monto - (monto * 2));
+    }
+    users[personaQueEstaPagando].saldo.push(pago);
+    document.getElementById(`reset-input${personaQueEstaPagando}`).reset();
+    calcularSaldos();
+    mostrarResultados();
+    mostrarEnConsola();
+    removeWhoPayDiv()
   }
-  users[personaQueEstaPagando].saldo.push(pago);
-  document.getElementById(`reset-input${personaQueEstaPagando}`).reset();
-  calcularSaldos();
-  mostrarResultados();
-  mostrarEnConsola();
-  removeWhoPayDiv()
 }
 
 function renderInputs(arr) {
@@ -195,14 +200,15 @@ function renderInputs(arr) {
   formTag.setAttribute('class', 'form');
   const labelTag = document.createElement('label');
   labelTag.setAttribute('for', `calculo${i}`);
+  labelTag.setAttribute('class', `label-input`);
   const spanTag = document.createElement('span');
   spanTag.setAttribute('id', 'name1');
   spanTag.innerText = arr[i].name + ": ";
   const inputTag = document.createElement('input');
   inputTag.setAttribute('id', `calculo${i}`);
-  inputTag.setAttribute('class', `inputgasto${i}`);
+  inputTag.setAttribute('class', `inputgasto${i} input-number`);
   inputTag.setAttribute('type', 'number');
-  inputTag.setAttribute('placeholder', 'ingresar numero');
+  inputTag.setAttribute('placeholder', '  ingresar numero');
 
   namesTest.appendChild(userContainer);
   userContainer.appendChild(formTag);
@@ -210,6 +216,7 @@ function renderInputs(arr) {
   formTag.appendChild(labelTag);
   labelTag.appendChild(spanTag);
   labelTag.appendChild(inputTag);
+  
 
   const buttonTag = document.createElement('button');
   buttonTag.setAttribute('class', `btn-calcular${i} calcular`);
@@ -222,8 +229,8 @@ function renderInputs(arr) {
   buttonPagar.innerText = 'Pagar';
 
   userContainer.appendChild(buttonTag);
-  userContainer.appendChild(spanTotal);
   userContainer.appendChild(buttonPagar);
+  userContainer.appendChild(spanTotal);
 }
 
 function renderCheckbox(arr) {
@@ -233,13 +240,14 @@ function renderCheckbox(arr) {
       const whoDiv = document.createElement('div');
       whoDiv.setAttribute('class', 'who-container');
       const labelWho = document.createElement('label');
-      labelWho.setAttribute('for', 'user-to-pay');
+      labelWho.setAttribute('class', 'user-to-pay');
       const inputWho = document.createElement('input');
       inputWho.setAttribute('id', `wich-user${i}`);
       inputWho.setAttribute('class', `inputwho${i} inputwho`);
       inputWho.setAttribute('type', 'checkbox');
       const pWho = document.createElement('p');
       pWho.setAttribute('id', `usuario-paga${i}`);
+      pWho.setAttribute('class', 'name-pay');
 
       selectionContainer.appendChild(whoDiv);
       whoDiv.appendChild(labelWho);
