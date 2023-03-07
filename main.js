@@ -145,7 +145,8 @@ function botonPagar(usuario) {
   } else {
     alert('ingrese un numero');
   }
-  
+
+  document.getElementById(`reset-input${usuario}`).reset();
   personaQueEstaPagando = usuario;
   reiniciarQuienRecibeArr();
 }
@@ -208,7 +209,7 @@ function renderInputs(arr) {
   inputTag.setAttribute('id', `calculo${i}`);
   inputTag.setAttribute('class', `inputgasto${i} input-number`);
   inputTag.setAttribute('type', 'number');
-  inputTag.setAttribute('placeholder', '  ingresar numero');
+  inputTag.setAttribute('placeholder', 'ingresar numero');
 
   namesTest.appendChild(userContainer);
   userContainer.appendChild(formTag);
