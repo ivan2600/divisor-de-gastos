@@ -154,9 +154,18 @@ function botonPagar(usuario) {
 }
 
 function reconocerCheckbox(usuario) {
-  if (document.getElementById(`wich-user${usuario}`).checked){
-    quienRecibe.push(usuario);
-  }    
+  const checkbox = document.getElementById(`wich-user${usuario}`);
+  
+  if (checkbox.checked) {
+    if (!quienRecibe.includes(usuario)) {
+      quienRecibe.push(usuario);
+    }
+  } else {
+    const index = quienRecibe.indexOf(usuario);
+    if (index > -1) {
+      quienRecibe.splice(index, 1);
+    }
+  }
 }
 
 function reiniciarQuienRecibeArr() {
