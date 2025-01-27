@@ -123,7 +123,7 @@ function botonClick(test) {
   let gasto = Number(input.value);
 
   console.log(`Usuario ${test}`);
-
+  if (input.value) {
   distribuirGasto(test, gasto);
 
   calcularSaldos();
@@ -134,6 +134,9 @@ function botonClick(test) {
   pago = 0;
   personaQueEstaPagando = 0;
   reiniciarQuienRecibeArr();
+  } else {
+    alert('ingrese un numero');
+  }
 }
 
 function botonPagar(usuario) {
@@ -155,7 +158,7 @@ function botonPagar(usuario) {
 
 function reconocerCheckbox(usuario) {
   const checkbox = document.getElementById(`wich-user${usuario}`);
-  
+
   if (checkbox.checked) {
     if (!quienRecibe.includes(usuario)) {
       quienRecibe.push(usuario);
